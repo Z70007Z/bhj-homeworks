@@ -1,32 +1,35 @@
 
 const clickerCounter = document.getElementById('clicker__counter');
 const clickerImg = document.getElementById('cookie');
-//const clickerForm = document.getElementById('clicker');
+const clickerstartStop = document.getElementById('clicker__startStop');
 
-clickerImg.onclick = function() {
+let startTime = Date.now();
 
-    //let target = e.target;
-    //if (target.tagName != 'IMG') return;
-    clickerCounter.textContent = parseInt(clickerCounter.textContent) + 1;
-
-    if (clickerImg.getAttribute('width') === '200') { 
-        clickerImg.width = clickerImg.width + 50;
+clickerImg.addEventListener('click', (event) => {
+    clickerCounter.textContent = parseInt(clickerCounter.textContent) + 1;;
+    if(clickerImg.getAttribute('width') === '200') { 
+        clickerImg.width = +clickerImg.width + 50;
     } else {
-        clickerImg.width = clickerImg.width - 50;
-    } 
+        clickerImg.width = +clickerImg.width - 50;
+    }  
 
+    let endTime = Date.now();    
+    let difference = 1 / ((endTime - startTime) / 1000);
+    clickerstartStop.textContent = difference.toFixed(2);
+    startTime = endTime;
+});
+
+
+let statusSave = clickerCounter.textContent;
+
+function timerCount() {
+   
+    if (statusSave === clickerCounter.textContent) {
+        clickerCounter.textContent = 0;
+        clickerstartStop.textContent = 0;
+    }
+
+    statusSave = clickerCounter.textContent;
 }
 
- function timerCount() {
-    //const timer = document.getElementById("timer")
-
-    clickerCounter.textContent = parseInt(clickerCounter.textContent) - 1;
-
-    if (parseInt(clickerCounter.textContent) === 0) {
-        clearTimeout(timeoutId);
-        window.alert("Вы победили в конкурсе!");
-    }
- }
-
-  let timeoutId = setInterval(timerCount, 1000);
-
+let timeoutId = setInterval(timerCount, 1000);
