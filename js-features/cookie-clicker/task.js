@@ -6,18 +6,21 @@ const clickerstartStop = document.getElementById('clicker__startStop');
 let startTime = Date.now();
 
 clickerImg.addEventListener('click', (event) => {
-    clickerCounter.textContent = parseInt(clickerCounter.textContent) + 1;;
-    if(clickerImg.getAttribute('width') === '200') { 
-        clickerImg.width = +clickerImg.width + 50;
-    } else {
-        clickerImg.width = +clickerImg.width - 50;
-    }  
+    // clickerCounter.textContent = parseInt(clickerCounter.textContent) + 1;;
+    // if(clickerImg.getAttribute('width') === '200') { 
+    //     clickerImg.width = +clickerImg.width + 50;
+    // } else {
+    //     clickerImg.width = +clickerImg.width - 50;
+    // }  
+
+    clickerImg.width = ++clickerCounter.textContent % 2 ? 250 : 200;
 
     let endTime = Date.now();    
     let difference = 1 / ((endTime - startTime) / 1000);
     clickerstartStop.textContent = difference.toFixed(2);
     startTime = endTime;
 });
+
 
 
 let statusSave = clickerCounter.textContent;
