@@ -2,7 +2,7 @@
 
 const elemevtP = document.getElementById('modal_main');
 const elemevtS = document.getElementById('modal_success');
-modal_success
+
 elemevtP.classList.add("modal_active");
 
 addEventListener("click", function(event) {
