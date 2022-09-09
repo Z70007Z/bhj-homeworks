@@ -8,7 +8,8 @@ elemevtP.classList.add("modal_active");
 addEventListener("click", function(event) {
     let infoClassName = event.target.classList;
 
-    if (String(infoClassName).includes('modal__close')) {
+     // if (String(infoClassName).includes('modal__close')) { И так тоже можно 
+        if (infoClassName.contains('modal__close')) {
         elemevtP.classList.remove("modal_active"); 
         elemevtS.classList.remove("modal_active"); 
         if (String(infoClassName).includes('show-success')) {
