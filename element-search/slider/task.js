@@ -5,7 +5,7 @@ const elementNext = document.querySelector('.slider__arrow_next');
 const elementSliderItem = document.querySelectorAll('.slider__item');
 
 
-function Action(step) {
+function action(step) {
 
     for(let itemSlider of elementSliderItem) {
         let nextActive;
@@ -45,12 +45,12 @@ function Action(step) {
 
 elementPrev.onclick = function() {
 
-    Action("Prev");
+    action("Prev");
 }
 
 elementNext.onclick = function() {
  
-    Action("Next");
+    action("Next");
 }
 
 
