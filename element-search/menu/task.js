@@ -30,7 +30,7 @@ for(let itemLink of elementListLink) {
                               
             }
         } else {
-            return false;    
+          //  return false;    
         }    
     };    
 }
