@@ -33,7 +33,7 @@ function action(step) {
                 if (step === "Next") {
                     elementSliderItem[0].classList.add('slider__item_active'); 
                 } else {
-                    elementSliderItem[4].classList.add('slider__item_active'); 
+                    elementSliderItem[elementSliderItem.length-1].classList.add('slider__item_active'); 
                 } 
                 break; 
             }         
