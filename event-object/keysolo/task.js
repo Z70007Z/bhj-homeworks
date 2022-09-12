@@ -26,9 +26,9 @@ class Game {
 
           if (((event.key).charAt().toLowerCase()) == ((itemLink.textContent).charAt().toLowerCase())) {
               this.success();
-              console.log("Да");
+              // console.log("Да");
           } else {
-              console.log("Нет");
+              // console.log("Нет");
               this.fail();
           }
 
