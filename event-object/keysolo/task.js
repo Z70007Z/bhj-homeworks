@@ -17,6 +17,20 @@ class Game {
   }
 
   registerEvents() {
+    //this.currentSymbol
+    // const elementListSymbol = document.querySelectorAll('.symbol');
+    document.addEventListener('keydown', function(event) {
+
+    //   if (event.code == ((this.currentSymbol))) {
+    //     this.success;
+    //    // console.log("Равно!");
+    //   } else {
+    //     this.fail;
+    //   }
+      // console.log(event.code);
+       console.log(this.currentSymbol);
+
+    });
     /*
       TODO:
       Написать обработчик события, который откликается
