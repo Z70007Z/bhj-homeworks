@@ -17,18 +17,23 @@ class Game {
   }
 
   registerEvents() {
-    //this.currentSymbol
-    // const elementListSymbol = document.querySelectorAll('.symbol');
-    document.addEventListener('keydown', function(event) {
 
-    //   if (event.code == ((this.currentSymbol))) {
-    //     this.success;
-    //    // console.log("Равно!");
-    //   } else {
-    //     this.fail;
-    //   }
-      // console.log(event.code);
-       console.log(this.currentSymbol);
+    document.addEventListener('keydown', function(event) {
+      const elementListSymbol = document.querySelectorAll('.symbol');
+
+      for(let itemLink of elementListSymbol) {
+        if ((itemLink.classList).contains("symbol_current")) {
+
+          if (((event.key).charAt().toLowerCase()) == ((itemLink.textContent).charAt().toLowerCase())) {
+              this.success();
+              console.log("Да");
+          } else {
+              console.log("Нет");
+              this.fail();
+          }
+
+        }
+      }
 
     });
     /*
