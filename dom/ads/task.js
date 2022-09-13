@@ -9,8 +9,10 @@ for (let j=0; j < elemenActiveFirst.length; j++) {
     Speed = elemenActiveFirst[j].getAttribute('data-speed');
 }
 
+let timeoutId = setInterval(timerText, Speed);
+
 function timerText() {
-    let Speed;
+    clearInterval(timeoutId)
     for (let i=0; i < elemenSpan.length; i++) {    
         if (elemenSpan[i].classList.contains("rotator__case_active")) {
             const elementNext = elemenSpan[i].nextElementSibling;
@@ -34,7 +36,7 @@ function timerText() {
             }
         }
     }    
-
+    timeoutId = setInterval(timerText, Speed);
 }
 
-let timeoutId = window.setInterval(timerText, Speed);
+
