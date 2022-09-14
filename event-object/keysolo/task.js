@@ -17,24 +17,24 @@ class Game {
   }
 
   registerEvents() {
-
-    document.addEventListener('keydown', function(event) {
+    let that = this;
+    document.addEventListener('keyup', function(event) {
       const elementListSymbol = document.querySelectorAll('.symbol');
-
       for(let itemLink of elementListSymbol) {
-        if ((itemLink.classList).contains("symbol_current")) {
-
+        const ekemNext = itemLink.nextElementSibling;
+        if ((ekemNext === null) || !(ekemNext.classList).contains("symbol_current"))  {
           if (((event.key).charAt().toLowerCase()) == ((itemLink.textContent).charAt().toLowerCase())) {
-              this.success();
-              // console.log("Да");
+              that.success();
+              if (ekemNext !== null) {
+                ekemNext.classList.add("symbol_current"); 
+              }             
+              break;
           } else {
-              // console.log("Нет");
-              this.fail();
+              that.fail();
+              break;
           }
-
         }
       }
-
     });
     /*
       TODO:

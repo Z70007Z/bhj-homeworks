@@ -2,14 +2,15 @@
 const elemenRevealAll = document.querySelectorAll('.reveal');
 
 addEventListener('scroll', function(elem) {
-    for(let itemLink of elemenRevealAll) {
+    // for(let itemLink of elemenRevealAll) {
+        for (let j=0; j < elemenRevealAll.length; j++) { 
         // const topReveal = itemLink.getBoundingClientRect().top;
         // const bottomReveal = itemLink.getBoundingClientRect().bottom;   
-        const {top, bottom} = itemLink.getBoundingClientRect();     
+        const {top, bottom} = elemenRevealAll[i].getBoundingClientRect();     
         if ((bottom < window.innerHeight) && (top > 0)) {
-            itemLink.classList.add("reveal_active");
+            elemenRevealAll[i].classList.add("reveal_active");
         } else {
-            itemLink.classList.remove("reveal_active");
+            elemenRevealAll[i].classList.remove("reveal_active");
         } 
     }
 
