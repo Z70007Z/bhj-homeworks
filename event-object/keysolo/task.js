@@ -17,20 +17,22 @@ class Game {
   }
 
   registerEvents() {
-    let that = this;
-    document.addEventListener('keyup', function(event) {
+    // let that = this;
+    document.addEventListener('keyup', (event) => {
       const elementListSymbol = document.querySelectorAll('.symbol');
       for(let itemLink of elementListSymbol) {
         const ekemNext = itemLink.nextElementSibling;
         if ((ekemNext === null) || !(ekemNext.classList).contains("symbol_current"))  {
           if (((event.key).charAt().toLowerCase()) == ((itemLink.textContent).charAt().toLowerCase())) {
-              that.success();
+            // that.success();
+            this.success();
               if (ekemNext !== null) {
                 ekemNext.classList.add("symbol_current"); 
               }             
               break;
           } else {
-              that.fail();
+            // that.success();
+            this.fail();
               break;
           }
         }
