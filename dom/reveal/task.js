@@ -3,7 +3,7 @@ const elemenRevealAll = document.querySelectorAll('.reveal');
 
 addEventListener('scroll', function(elem) {
     // for(let itemLink of elemenRevealAll) {
-        for (let j=0; j < elemenRevealAll.length; j++) { 
+        for (let i=0; i < elemenRevealAll.length; i++) { 
         // const topReveal = itemLink.getBoundingClientRect().top;
         // const bottomReveal = itemLink.getBoundingClientRect().bottom;   
         const {top, bottom} = elemenRevealAll[i].getBoundingClientRect();     
