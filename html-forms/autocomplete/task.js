@@ -81,6 +81,18 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
+    let arraySt = [];
+      for (let i=0; i < this.input.options.length; i++) {       
+        let st = this.input.options[i].textContent;
+          if ((st.slice(0, (text.length))).toLowerCase() === text.toLowerCase()) {
+            arraySt.push({
+              text:  this.input.options[i].textContent,
+              value: this.input.options[i].index
+            });
+          }
+      }
+    return arraySt;
+
     return [
       {
         text: 'Чубакка',
