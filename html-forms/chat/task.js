@@ -37,23 +37,18 @@ function getTime() {
 }
 
 function textRobot() {
-    // const elementCheck = messages.innerHTML;
-    // if (elementCheck !== null) {
-    // console.log(elementCheck.classList);
-    // if (elementCheck.classList.contains("message_client")) {
             let rand = Math.floor(Math.random() * messagesRomot.length);
             htmlAddCode("",getTime(),messagesRomot[rand]);
-    // }
-    //}
 }
 
 elementChatInput.addEventListener('keyup', (event) => {
     if (event.key == "Enter"){
         htmlAddCode("message_client",getTime(),(elementChatInput.value).trim());
         elementChatInput.value = '';
-        textRobot();
+        
+        let timerId = setInterval(() => textRobot(), 2000);
+        setTimeout(() => {clearInterval(timerId);}, 3000);
     }
 });
 
-// let timeoutId = setInterval(textRobot(), 1000);
 
