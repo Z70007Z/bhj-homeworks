@@ -11,7 +11,7 @@ function htmlAddCode(message,text) {
     elementdiv.classList.add('tooltip');
     elementdiv.classList.add('tooltip_active');
     elementdiv.textContent = text;
-
+    elementdiv.setAttribute('data-position', '1000');
     message.after(elementdiv);
 }
 
