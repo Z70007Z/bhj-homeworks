@@ -3,8 +3,6 @@ const elementInput = document.querySelector('.tasks__input');
 const elementAdd = document.querySelector('.tasks__add');
 const elementList = document.querySelector('.tasks__list');
 
-let elementTaskRemove;
-
 function htmlAddCode(text) {
     elementList.innerHTML += `
         <div class="task">
@@ -20,14 +18,13 @@ elementInput.addEventListener('keyup', (event) => {
     // event.preventDefault();
     // if (event.key == "Enter"){
     //     htmlAddCode((elementInput.value).trim());
-    //     elementTaskRemove = document.querySelectorAll('.task__remove');
     // }
 });
 
 elementAdd.addEventListener('click', (event) => {
     event.preventDefault();
-    htmlAddCode((elementInput.value).trim())
-    elementTaskRemove = document.querySelectorAll('.task__remove');
+    htmlAddCode((elementInput.value).trim());
+    elementInput.value = '';
 });
 
 elementList.addEventListener('click', (event) => {
@@ -36,6 +33,5 @@ elementList.addEventListener('click', (event) => {
         const elementA = document.querySelector('.del');
         const elementDiv = elementA.closest('.task');
         elementDiv.remove();
-    }
-    
+    }   
 });

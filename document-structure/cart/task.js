@@ -44,7 +44,7 @@ for (let itemA of elementAdd) {
         for (let itemCart of elementCartProduct) {
             if (itemCart.getAttribute('data-id') === elementProduct.getAttribute('data-id')) {
                 elementID = 1;
-                itemCart.lastElementChild.textContent = elementСhild.textContent;
+                itemCart.lastElementChild.textContent = Number(itemCart.lastElementChild.textContent) + Number(elementСhild.textContent);
             }           
         }
 
