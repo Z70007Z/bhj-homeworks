@@ -22,8 +22,16 @@ function htmlAddCode(Atr,Sum) {
     `;
 }
 
-xhr.addEventListener('readystatechange',() => {
-    if (xhr.readyState === xhr.DONE) {
+xhr.open("GET", "https://netology-slow-rest.herokuapp.com");
+xhr.send();
+
+// xhr.addEventListener('readystatechange',() => {
+xhr.onload = function() {
+try {
+    if (xhr.status != 200) {
+        alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+    } else {
+    // if (xhr.readyState === xhr.DONE) {
         if (elementImg.classList.contains('loader_active')) {
             elementImg.classList.remove('loader_active');
 
@@ -43,7 +51,8 @@ xhr.addEventListener('readystatechange',() => {
             });
         }
     }
-})
+} catch(err) { 
+    alert("Запрос не удался");
+  }
+}
 
-xhr.open("GET", "https://netology-slow-rest.herokuapp.com");
-xhr.send();
