@@ -33,7 +33,7 @@ xhr.addEventListener('readystatechange',() => {
                 const [key, value] = entry;
                 const valueCharCode = value.CharCode;
                 const valueValue = value.Value;
-                    // console.log(localStorage[valueCharCode]);
+
                 if (localStorage[valueCharCode] !== undefined) {
                     htmlAddCode(valueCharCode,localStorage[valueCharCode]);
                 } else {
