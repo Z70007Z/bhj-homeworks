@@ -44,24 +44,31 @@ function htmlAddCodeStat(key, answer) {
 
 xhr.addEventListener('readystatechange',(event) => {
     event.preventDefault();
-    if (xhr.readyState === xhr.DONE) {
-        let object = JSON.parse(xhr.responseText);
+    // if (xhr.readyState === xhr.DONE) {
+    try {
+        if (xhr.status != 200) {
+            alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+        } else {
+            let object = JSON.parse(xhr.responseText);
 
-        if (object.data !== undefined) {
-            id = object.id;
-            elementPollTitle.textContent = object.data.title;
-            Object.entries(object.data.answers).forEach((entry) => {
-                const [key, value] = entry;
-                htmlAddCode(value);                         
-            });
-        } else if (object.stat !== undefined) {
-            Object.entries(object.stat).forEach((entry) => {
-                const [key, value] = entry;
-                htmlAddCodeStat(value.answer, value.votes);                         
-            });           
+            if (object.data !== undefined) {
+                id = object.id;
+                elementPollTitle.textContent = object.data.title;
+                Object.entries(object.data.answers).forEach((entry) => {
+                    const [key, value] = entry;
+                    htmlAddCode(value);                         
+                });
+            } else if (object.stat !== undefined) {
+                Object.entries(object.stat).forEach((entry) => {
+                    const [key, value] = entry;
+                    htmlAddCodeStat(value.answer, value.votes);                         
+                });           
+            }
         }
+    } catch(err) { 
+        alert("Запрос не удался");
     }
-})
+});
 
 xhr.open("GET", "https://netology-slow-rest.herokuapp.com/poll.php");
 xhr.send();
