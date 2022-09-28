@@ -16,6 +16,8 @@ function setProgress(e) {
 
 elementSend.addEventListener('submit', (even) => {
     even.preventDefault();
+    let input = this.elements.file;
+    let file = input.files[0];
 
         xhr.onload.onprogress  = function(event) {
             try {
@@ -31,18 +33,7 @@ elementSend.addEventListener('submit', (even) => {
 
     const formData = new FormData(elementForm);
     // formData.append('file', file);
-    formData.append('file', $input.prop('files')[0]);
-
-    $.ajax({
-        url: 'https://netology-slow-rest.herokuapp.com/upload.php',
-        data: formData,
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        success: function (data) {
-            alert(data);
-        }
-    });
+    formData.append("myfile", file);
 
     xhr.send(formData);
 
