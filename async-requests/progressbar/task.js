@@ -2,31 +2,48 @@
 const elementProgress  = document.getElementById('progress');
 const elementForm  = document.getElementById('form');
 const elementSend = document.getElementById("send");
+const elementfile= document.getElementById("file");
 
 const xhr = new XMLHttpRequest();
+
+function setProgress(e) {
+    if (e.lengthComputable) {
+        let complete = e.loaded / e.total;
+        $("#progress").value(Math.floor(complete*100));
+        console.log(elementProgress.value);
+    }
+}
 
 elementSend.addEventListener('submit', (even) => {
     even.preventDefault();
 
-    xhr.onload.onprogress  = function(event) {
-        try {
-            
-            elementProgress.value = event.loaded;
+        xhr.onload.onprogress  = function(event) {
+            try {
 
-        } catch(err) { 
-            alert("Загрузна не удалась!");
+                setProgress(event)
+
+            } catch(err) { 
+                alert("Загрузна не удалась!");
+            }
         }
-    }
-    // xhr.addEventListener('readystatechange',(event) => {
 
-    // });
+    //xhr.open("POST", "/Form/");
 
-    xhr.open("POST", "/form/");
     const formData = new FormData(elementForm);
+    // formData.append('file', file);
+    formData.append('file', $input.prop('files')[0]);
+
+    $.ajax({
+        url: 'https://netology-slow-rest.herokuapp.com/upload.php',
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (data) {
+            alert(data);
+        }
+    });
+
     xhr.send(formData);
 
 });
-
-    
-
-

@@ -14,7 +14,15 @@ function htmlAddCode(message,text,left) {
     elementdiv.textContent = text;
     elementdiv.setAttribute('data-position', '1000');
     elementdiv.style.left = left + "px";
+   // elementdiv.style.top = (top + (bottom-top)) + "px";
     message.after(elementdiv);
+
+    // const elementChatAct = document.querySelector('.tooltip_active');
+    // const elementChatActPrevious = elementChatAct.previousElementSibling;
+    // const {top, bottom} = elementChatActPrevious.getBoundingClientRect();
+    // if ((top > 0)) {
+    //     elementChatAct.style.top = (top + (bottom-top)) + "px";
+    // }
 }
 
 function delAllTooltipActive() {
@@ -31,7 +39,8 @@ for (let itemA of elementChat) {
         event.preventDefault();
 
         
-        const {left, top} = itemA.getBoundingClientRect();
+        const {left} = itemA.getBoundingClientRect();
+        // const {left, top} = itemA.getBoundingClientRect();
 
         if (itemA.nextElementSibling !== null) {
             let elementNext = itemA.nextElementSibling;
@@ -43,10 +52,19 @@ for (let itemA of elementChat) {
                     elementNext.classList.add('tooltip_active');
                 }
             } else {
-                htmlAddCode(itemA, itemA.title, left); 
+                htmlAddCode(itemA, itemA.title, left,); 
             }
         } else {
             htmlAddCode(itemA, itemA.title, left);            
         }
     });
 }
+
+document.addEventListener('scroll', (event) => {
+    const elementChatAct = document.querySelector('.tooltip_active');
+    const elementChatActPrevious = elementChatAct.previousElementSibling;
+    const {top, bottom} = elementChatActPrevious.getBoundingClientRect();
+    if ((top > 0)) {
+        elementChatAct.style.top = (top + (bottom-top)) + "px";
+    }
+})
