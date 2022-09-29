@@ -1,40 +1,37 @@
 
 const elementProgress  = document.getElementById('progress');
 const elementForm  = document.getElementById('form');
-const elementSend = document.getElementById("send");
-const elementfile= document.getElementById("file");
 
 const xhr = new XMLHttpRequest();
 
-function setProgress(e) {
-    if (e.lengthComputable) {
-        let complete = e.loaded / e.total;
-        $("#progress").value(Math.floor(complete*100));
-        console.log(elementProgress.value);
-    }
-}
+// function setProgress(e) {
+//     if (e.lengthComputable) {
+//         let complete = e.loaded / e.total;
+//         $("#progress").value(Math.floor(complete*100));
+//         console.log(elementProgress.value);
+//     }
+// }
 
-elementSend.addEventListener('submit', (even) => {
+elementForm.addEventListener('submit', (even) => {
     even.preventDefault();
-    let input = this.elements.file;
-    let file = input.files[0];
 
-        xhr.onload.onprogress  = function(event) {
+        xhr.upload.onprogress  = function(event) {
+            
             try {
 
-                setProgress(event)
+                // setProgress(event)
+                elementProgress.value = event.loaded / event.total;
 
             } catch(err) { 
                 alert("Загрузна не удалась!");
             }
         }
 
-    //xhr.open("POST", "/Form/");
 
-    const formData = new FormData(elementForm);
-    // formData.append('file', file);
-    formData.append("myfile", file);
-
-    xhr.send(formData);
+    xhr.open("POST", "https://netology-slow-rest.herokuapp.com/upload.php");
+    // const formData = new FormData(elementForm);
+    xhr.send(new FormData(elementForm));
 
 });
+
+
