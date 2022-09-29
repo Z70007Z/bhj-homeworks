@@ -9,7 +9,6 @@ if (elementStorage) {
 
 elementEditor.addEventListener('input', (even) => {
 
-
      localStorage.setItem('value', elementEditor.value); 
 
 });
