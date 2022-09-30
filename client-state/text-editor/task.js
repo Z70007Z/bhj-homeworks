@@ -1,11 +1,7 @@
 
 const elementEditor = document.getElementById('editor');
-const elementStorage  = localStorage.getItem('value');
 
-if (elementStorage) {
-
-    elementEditor.value = elementStorage;
-}
+elementEditor.value = localStorage.getItem('value');
 
 elementEditor.addEventListener('input', (even) => {
 
